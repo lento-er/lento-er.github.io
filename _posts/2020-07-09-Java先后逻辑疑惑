@@ -1,0 +1,89 @@
+---
+layout:     post                   
+title:      Scanner创造对象是否需要新的对象接收带来的问题          
+subtitle:   Javase
+date:       2020-07-09           
+author:     丠                 
+header-img: img/190.png   
+catalog: true                       
+tags:                             
+    - Javase
+    - java.util.Scanner
+    - 编程中的思考
+---
+
+
+# javase中逻辑块，方法的运算顺序
+
+先看一篇代码
+
+```
+public class asd{
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        //获取用户输入的一行数据  返回为字符串
+        String s = in.nextLine();
+        System.out.println(s);
+        //循环读取String数据，当输入exit时退出循环
+        while (!in.hasNext("exit")) {
+            System.out.println(in.nextLine());
+        }
+        //关闭输入
+        in.close();
+    }
+}
+``` 
+以上代码的运行结果
+`C：> asd + "enter"`
+`C：> asd`
+`C：> exit + "enter"`
+`结束运行`
+
+### 运行逻辑问题
+
+当把**while**循环上面的
+`Sysetm.out.prinln(s);`
+删除掉之后，代码的运行结果发生了细微的改变
+
+删掉上述语句之后的运行结果
+`C:> asd + "enter"`
+`C:> "     "`
+`C:> asd + "enter"`
+`C:> asd`
+
+可以看到运行结果的改变
+**第一次的键盘输入并没有被输出**
+知道第二次键入字符串时，才开始输出
+
+### 分析问题
+
+**1** 可以看出来当变量s的输出语句被删除后，运行代码第一次输入的字符串并没有触发while循环中的输出语句。
+
+从逻辑上来说，当输入的字符串满足while循环的条件
+
+`!in.hasNext("exit")`
+
+的时候，控制台理应输出相应的字符串，但事实是只有当第二次输入时，代码才会正常运行达到我们期望的结果。
+
+**2** 是否和编程中更加深层，更加底层的原因有关。
+
+`in.nextLine()`从Scanner取来的键入值给予了String s。
+
+而while循环中的输出语句` System.out.println(in.nextLine())`
+
+输出的恰好就是in.nextLine(),所以是和临时缓存区有关的问题。
+
+#### 对于疑问2的实验论证
+
+直接删除String s = in.nextLine.();
+
+运行发现，结果回复正常
+
+### 初步结论
+
+**1**的分析很有可能，出现的运行结果异常很有可能与缓冲区有关
+
+
+
+
+
