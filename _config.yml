@@ -89,7 +89,7 @@ service-worker: true
 # Friends
 friends: [
    {
-        title: "梁同学的blog",
+        title: "Hoo的博客",
         href: "https://hooblog.cn/"
     }
 ]
