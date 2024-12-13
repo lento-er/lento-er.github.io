@@ -1,8 +1,8 @@
 # Site settings
-title: 北一先生
-SEOTitle: 北一ovo
+title: 哑火
+SEOTitle: 哑火
 header-img: img/img108.png
-email: 2444534873@qq.com
+email: zhangxuanzby@163.com
 description: "ovo"
 keyword: "beiyi,北一,blog"
 url: "http://lento-er.github.io"          # your host, for absolute URL
@@ -11,7 +11,7 @@ github_repo: "https://github.com/lento-er/lento-er.github.io.git" # you code rep
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "不看月亮不看你，你和月亮蒙鼓里"
+sidebar-about-description: "嗝~~~~~~~~~~~~~~"
 sidebar-avatar: /img/imghead01.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
